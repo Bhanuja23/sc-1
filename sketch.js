@@ -1,11 +1,12 @@
 
+
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 var paperBall;
 var wall1, wall2, wall3;
-var ground;
+var ground1;
 
 function preload() {
 	
@@ -24,8 +25,8 @@ function setup() {
 	wall3=createSprite(730,580,20,150);
 	wall3.shapeColor="white";
     paperBall = new paper(100,620,20);
-	ground = createSprite(400,650,800,20);
-	ground.shapeColor="yellow";
+	ground1 = new ground(400,650,800,20);
+
 	Engine.run(engine);
     
 }
@@ -35,8 +36,8 @@ function draw() {
   rectMode(CENTER);
   background(180);
   paperBall.display();
-
- paperBall.collide=ground
+  ground1.display()
+ //paperBall.collide=ground
 	
 
 
@@ -44,9 +45,11 @@ function draw() {
 }
 
 function keyPressed(){
-	if (keyCode === "UP_ARROW"){
-		Matter.Body.applyForce(paper.body, paper.body.position,{x:85,y:-85});
+	if (keyCode === UP_ARROW){
+		Matter.Body.applyForce(paperBall.body, paperBall.body.position,{x:50,y:-50});
 		
 	}
 }
+
+
 
